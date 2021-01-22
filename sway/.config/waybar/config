@@ -1,0 +1,108 @@
+{
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window"
+  ],
+  "modules-center": [
+    "sway/mode",
+    "custom/media"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "cpu",
+    "memory",
+    "temperature",
+    "sway/language",
+    "battery",
+    "clock",
+    "custom/weather",
+    "tray",
+    "custom/power"
+  ],
+  "sway/workspaces": {
+    "disable-scroll-wraparound": true,
+    "smooth-scrolling-threshold": 2.0
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "custom/media": {
+    "format": "{icon}{}",
+    "return-type": "json",
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " "
+    },
+    "max-length": 70,
+    "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%F}"
+  },
+  "custom/weather": {
+    "exec": "curl 'http://wttr.in/Amsterdam?format=1'",
+    "interval": 3600
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": true
+  },
+  "memory": {
+    "format": "{percentage}% "
+  },
+  "temperature": {
+    "thermal-zone": 8,
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": ["", "", ""]
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "network": {
+    "format-wifi": "{signalStrength}% ",
+    "tooltip-format-wifi": "{essid} @ {frequency}MHz - {ipaddr}/{cidr}",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "on-click": "nm-connection-editor"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "smooth-scrolling-threshold": 2.0,
+    "on-click": "pavucontrol"
+  },
+  "custom/power": {
+    "format": "⏻⏷ ",
+    "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Log-out' 'swaymsg exit' -b 'Reboot' 'systemctl reboot' -b 'Power off' 'systemctl poweroff'"
+  }
+}
