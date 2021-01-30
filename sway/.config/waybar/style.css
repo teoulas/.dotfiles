@@ -39,6 +39,7 @@ widget > label,
 widget > box {
   padding: 0 0.8em;
 }
+
 /*
 widget + widget > label,
 widget + widget > box {
@@ -51,14 +52,12 @@ widget + widget > box {
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    color: #ffffff;
   }
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  color: #f53c3c;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
