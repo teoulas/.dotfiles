@@ -1,0 +1,7 @@
+show=drun
+prompt=Search for an application
+allow_images=true
+insensitive=true
+sort_order=alphabetical
+gtk_dark=true
+key_expand=Alt_L
