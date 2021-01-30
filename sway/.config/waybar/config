@@ -11,6 +11,7 @@
     "pulseaudio",
     "network",
     "cpu",
+    "custom/freq",
     "memory",
     "temperature",
     "sway/language",
@@ -54,6 +55,11 @@
     "format": "{usage}% ",
     "tooltip": true
   },
+  "custom/freq": {
+    "interval": 1,
+    "format": "{}MHz",
+    "exec": "echo \"scale=0; $(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sort | tail -n1) / 1000\" | bc -l"
+  },
   "memory": {
     "format": "{percentage}% "
   },
@@ -80,7 +86,7 @@
     "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "nm-connection-editor"
+    "on-click": "gnome-control-center wifi"
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
@@ -99,10 +105,10 @@
       "default": ["", "", ""]
     },
     "smooth-scrolling-threshold": 2.0,
-    "on-click": "pavucontrol"
+    "on-click": "gnome-control-center sound"
   },
   "custom/power": {
     "format": "⏻⏷ ",
-    "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Log-out' 'swaymsg exit' -b 'Reboot' 'systemctl reboot' -b 'Power off' 'systemctl poweroff'"
+    "on-click": "swaynag -t warning -m 'Power Menu Options' -z 'Lock' 'swaylock -f -c 000000' -b 'Log-out' 'swaymsg exit' -b 'Reboot' 'systemctl reboot' -b 'Power off' 'systemctl poweroff'"
   }
 }
