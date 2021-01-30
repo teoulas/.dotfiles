@@ -1,7 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -9,10 +5,10 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+# set $left h
+# set $down j
+# set $up k
+# set $right l
 # Your preferred terminal emulator
 #set $term alacritty
 set $term kitty
@@ -43,10 +39,11 @@ output eDP-1 subpixel rgb
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -87,7 +84,7 @@ input type:keyboard {
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -104,14 +101,16 @@ input type:keyboard {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    bindsym $mod+l exec swaylock -f -c 000000
 #
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    # bindsym $mod+$left focus left
+    # bindsym $mod+$down focus down
+    # bindsym $mod+$up focus up
+    # bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -119,10 +118,10 @@ input type:keyboard {
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    # bindsym $mod+Shift+$left move left
+    # bindsym $mod+Shift+$down move down
+    # bindsym $mod+Shift+$up move up
+    # bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -170,13 +169,13 @@ input type:keyboard {
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+x fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+f floating toggle
 
     # Swap focus between the tiling area and the floating area
-    #bindsym $mod+space focus mode_toggle
+    bindsym $mod+f focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -200,10 +199,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    # bindsym $left resize shrink width 10px
+    # bindsym $down resize grow height 10px
+    # bindsym $up resize shrink height 10px
+    # bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -221,15 +220,18 @@ bindsym $mod+r mode "resize"
 # Media keys
 #
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl -c backlight -m set 5%- | awk -F , '{print $4}' | tr -d % > $SWAYSOCK.wob
-bindsym XF86MonBrightnessUp exec brightnessctl -c backlight -m set 5%+ | awk -F , '{print $4}' | tr -d % > $SWAYSOCK.wob
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86MonBrightnessDown exec brightnessctl -c backlight -m set 5%- && echo $(($(brightnessctl get)00/$(brightnessctl max))) > $SWAYSOCK.wob
+bindsym XF86MonBrightnessUp exec brightnessctl -c backlight -m set 5%+ &&  echo $(($(brightnessctl get)00/$(brightnessctl max))) > $SWAYSOCK.wob
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Search exec wofi
+bindsym XF86Search exec $menu
 
 #
 # Status Bar:
@@ -257,3 +259,6 @@ exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 
 # Special windows
 for_window [app_id="org.gnome.NautilusPreviewer"] floating enable
+for_window [app_id="gnome-control-center"] floating enable
+for_window [app_id="gnome-calculator"] floating enable
+for_window [app_id="pavucontrol"] floating enable
