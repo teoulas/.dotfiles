@@ -102,7 +102,11 @@ input type:keyboard {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
+    # Lock on demand
     bindsym $mod+l exec swaylock -f -c 000000
+
+    # Screenshot
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
 #
 # Moving around:
 #
