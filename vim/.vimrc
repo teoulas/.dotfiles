@@ -14,13 +14,14 @@ Plug 'vim-scripts/surround.vim'
 Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'itspriddle/vim-jquery'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vim-ruby/vim-ruby'
 Plug 'jpo/vim-railscasts-theme'
 Plug 'ap/vim-css-color'
 Plug 'ruanyl/vim-gh-line'
 Plug 'pechorin/any-jump.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -47,7 +48,8 @@ set nowrap            " no wrapping
 set colorcolumn=80    " but show a line at 80 chars
 
 " optimization settings to alleviate sluginess
-set re=1              " older regex engine is faster for Ruby regexes
+"set re=1              " older regex engine is faster for Ruby regexes
+set re=0              " or TypeScript highlighting takes forever
 set lazyredraw
 
 "indent settings
