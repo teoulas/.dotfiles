@@ -45,6 +45,7 @@ set hlsearch          " highlight searches
 set relativenumber    " add relative line numbers - SLOW
 set cursorline        " underline current (cursor) line - SLOW
 set ruler             " show row/col at the bottom right
+set signcolumn=number
 
 set nowrap            " no wrapping
 set colorcolumn=80    " but show a line at 80 chars
