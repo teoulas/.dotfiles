@@ -15,7 +15,9 @@ Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
+" alternatively: peitalin/vim-jsx-typescript
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'jpo/vim-railscasts-theme'
 Plug 'ap/vim-css-color'
