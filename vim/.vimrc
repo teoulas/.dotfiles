@@ -24,6 +24,7 @@ Plug 'ap/vim-css-color'
 Plug 'ruanyl/vim-gh-line'
 Plug 'pechorin/any-jump.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
@@ -55,11 +56,15 @@ set colorcolumn=80    " but show a line at 80 chars
 set re=0              " or TypeScript highlighting takes forever
 set lazyredraw
 
+" whitespace characters
+set list
+set listchars=tab:⇥\ ·,nbsp:␣,eol:↲,trail:␠
+
 "indent settings
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set tabstop=4
+set shiftwidth=4
+"set softtabstop=2
+"set expandtab
 set autoindent
 
 "status line
