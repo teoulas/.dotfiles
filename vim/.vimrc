@@ -25,6 +25,7 @@ Plug 'ruanyl/vim-gh-line'
 Plug 'pechorin/any-jump.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-sleuth'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -125,7 +126,7 @@ let g:gh_use_canonical = 1
 let g:gh_open_command = 'xdg-open '
 
 " coc language servers
-let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint', 'coc-json', 'coc-css', 'coc-html']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint', 'coc-json', 'coc-css', 'coc-html', 'coc-go']
 set updatetime=1000
 
 " Strip trailing whitespace
