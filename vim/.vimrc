@@ -25,6 +25,7 @@ Plug 'pechorin/any-jump.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-sleuth'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'yssl/QFEnter'
 
 call plug#end()
 
@@ -144,3 +145,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Svelte as html
 au! BufNewFile,BufRead *.svelte set ft=html
+
+" QFEnter keymap similar to ctrlP
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_keymap.topen = ['<C-t>']
