@@ -118,7 +118,7 @@ set imsearch=-1
 set title
 
 " ctrlP plugin config
-let g:ctrlp_root_markers = ['docker-compose.yml', 'Gemfile']
+let g:ctrlp_root_markers = ['Gemfile', '.gitignore', 'go.mod', 'yarn.lock']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " vim-gh-line config
@@ -151,3 +151,11 @@ let g:qfenter_keymap = {}
 let g:qfenter_keymap.vopen = ['<C-v>']
 let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
 let g:qfenter_keymap.topen = ['<C-t>']
+
+" Resize splits on window resize
+autocmd VimResized * wincmd =
+
+" navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
