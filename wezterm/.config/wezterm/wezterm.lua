@@ -6,7 +6,8 @@ return {
   enable_wayland = true,
   font = wezterm.font("Fantasque Sans Mono"),
   font_size = 13,
-  freetype_load_target = "Light", -- HorizontalLcd is too bold and has extra fringing
+  freetype_load_target = "Light", -- HorizontalLcd is too bold
+  freetype_render_target = "HorizontalLcd",
 
   -- Keybindings
   keys = {
