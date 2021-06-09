@@ -118,8 +118,9 @@ set imsearch=-1
 set title
 
 " ctrlP plugin config
-let g:ctrlp_root_markers = ['Gemfile', '.gitignore', 'go.mod', 'yarn.lock']
+let g:ctrlp_root_markers = ['Gemfile', 'go.mod', 'package.json', 'yarn.lock']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_mruf_relative = 1
 
 " vim-gh-line config
 let g:gh_use_canonical = 1
