@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 " vim-plug packages
 Plug 'mileszs/ack.vim'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/endwise.vim'
 Plug 'vim-scripts/fugitive.vim'
 Plug 'tpope/vim-haml'
@@ -26,6 +25,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-sleuth'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'yssl/QFEnter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -91,7 +92,7 @@ set mouse=a
 let mapleader = ","
 
 nnoremap <leader>b :BufExplorer<cr>
-nnoremap <leader>p :CtrlPMixed<cr>
+nnoremap <leader>p :Files<cr>
 nnoremap <leader>a :Ack! --word-regexp <cword><cr>
 silent! nmap <silent> <leader>t :NERDTreeToggle<cr>
 
@@ -116,11 +117,6 @@ set imsearch=-1
 
 " Current filename in title
 set title
-
-" ctrlP plugin config
-let g:ctrlp_root_markers = ['Gemfile', 'go.mod', 'package.json', 'yarn.lock']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_mruf_relative = 1
 
 " vim-gh-line config
 let g:gh_use_canonical = 1
