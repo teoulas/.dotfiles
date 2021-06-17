@@ -45,7 +45,8 @@ set showmode          " show current mode down the bottom
 set incsearch         " find the next match as we type the search
 set hlsearch          " highlight searches
 
-set relativenumber    " add relative line numbers - SLOW
+"set relativenumber    " add relative line numbers - SLOW
+set number            " line number
 set cursorline        " underline current (cursor) line - SLOW
 set ruler             " show row/col at the bottom right
 set signcolumn=number
@@ -155,4 +156,3 @@ autocmd VimResized * wincmd =
 " navigate completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
