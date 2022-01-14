@@ -3,28 +3,14 @@
     "sway/workspaces",
     "sway/window"
   ],
-  "modules-center": [
-    "sway/mode",
-    "custom/media"
-  ],
-  "modules-right": [
-    "pulseaudio",
-    "network",
-    "cpu",
-    "custom/freq",
-    "memory",
-    "temperature",
-    "sway/language",
-    "battery",
-    "clock",
-    "custom/weather",
-    "tray",
-    "custom/power"
-  ],
   "sway/workspaces": {
     "disable-scroll-wraparound": true,
     "smooth-scrolling-threshold": 2.0
   },
+  "modules-center": [
+    "sway/mode",
+    "custom/media"
+  ],
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
@@ -39,6 +25,20 @@
     "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click": "playerctl play-pause"
   },
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "cpu",
+    "custom/freq",
+    "memory",
+    "temperature",
+    "sway/language",
+    "battery",
+    "clock",
+    "custom/weather",
+    "tray",
+    "custom/power"
+  ],
   "tray": {
     "icon-size": 16,
     "spacing": 10
@@ -108,7 +108,7 @@
     "on-click": "gnome-control-center sound"
   },
   "custom/power": {
-    "format": "⏻⏷ ",
+    "format": "🔐",
     "on-click": "swaynag -t warning -m 'Power Menu Options' -z 'Lock' 'swaylock -f -c 000000' -b 'Log-out' 'swaymsg exit' -b 'Reboot' 'systemctl reboot' -b 'Power off' 'systemctl poweroff'"
   }
 }
