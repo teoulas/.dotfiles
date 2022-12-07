@@ -11,7 +11,6 @@ Plug 'vim-scripts/The-NERD-tree'
 Plug 'tpope/vim-rails'
 Plug 'vim-scripts/surround.vim'
 Plug 'scrooloose/syntastic'
-Plug 'vim-scripts/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 " alternatively: peitalin/vim-jsx-typescript
