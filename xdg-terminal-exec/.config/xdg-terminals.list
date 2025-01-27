@@ -1,0 +1,6 @@
+# xdg-terminal-exec needs to be installed
+
+com.mitchellh.ghostty.desktop
+app.devsuite.Ptyxis
+com.gexperts.Tilix.desktop
+org.gnome.Console.desktop
