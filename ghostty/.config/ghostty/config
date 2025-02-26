@@ -1,5 +1,6 @@
-font-family = Go Mono
+font-family = "Go Mono"
 font-size = 11
+
 keybind = "ctrl+alt+d=new_split:down"
 keybind = "ctrl+alt+r=new_split:right"
 keybind = "ctrl+alt+a=new_split:auto"
